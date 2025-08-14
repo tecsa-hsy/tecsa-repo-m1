@@ -1,5 +1,5 @@
 const server = require('http').createServer((req, res) => { // Create server
-    res.end('Hello from your Node.Js Backend!\n');
+    res.end('Hello from your Node.Js BE!\n');
     });
 
     server.listen(3000, () => {// Start server locally on specified port
