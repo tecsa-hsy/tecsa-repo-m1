@@ -1,6 +1,6 @@
 const server = require("http").createServer((req, res) => {
   // Create server
-  res.end("Hello world from your Node.Js Backend!\n");
+  res.end("Hello world from your Node.Js BE!\n");
 });
 
 server.listen(3000, () => {
