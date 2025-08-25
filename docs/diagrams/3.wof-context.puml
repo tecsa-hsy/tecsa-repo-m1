@@ -1,0 +1,22 @@
+@startuml
+' Import C4-PlantUML std lib for drawing context diagrams (Level1). Access to predefined macros and styles.
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title "Wheel Of Fortune" Web App - Context Diagram
+
+Person(user, "User", "Plays the Wheel of Fortune game via browser or mobile device")
+
+System_Boundary(system, "Wheel Of Fortune Web App") {
+  System(wof_app, "Wheel Of Fortune Game", "Full-stack web app (frontend, backend, database)")
+}
+
+System_Ext(local, "Local Ubuntu VM", "Dev Deployment Env temporarely accessible via the internet")
+System_Ext(vps, "Virtual Private Server", "Int Deployment Env accessible via the internet")
+System_Ext(domain, "Domain & HTTPS", "Provides secure, dedicated domain access to the app")
+
+Rel(user, wof_app, "Plays game, spins wheel, resets stats")
+Rel(wof_app, local, "Deployed to")
+Rel(wof_app, vps, "Deployed to")
+Rel(wof_app, domain, "Accessible securely via")
+
+@enduml

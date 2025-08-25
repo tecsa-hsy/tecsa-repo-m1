@@ -1,0 +1,49 @@
+@startuml C4_Local_Deployment_Diagram
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
+
+title "Wheel Of Fortune" Web App - Local Deployment
+
+' Define the Person (User)
+Person(player, "Player", "A person playing WoF")
+
+' Define the Internet as a global boundary for external access (empty, just conceptual)
+Deployment_Node(internet, "The Internet", "Public Network") {
+}
+
+' Local Development Environment
+Deployment_Node(localEnv, "Local Development Environment", "Developer's Setup") {
+
+    Deployment_Node(devMachine, "Development Machine", "PC / Laptop") {
+
+        Deployment_Node(xampp, "XAMPP Stack", "Apache Webserver, MariaDB Server") {
+            Container(localFrontend, "Frontend Application", "HTML5, CSS, JavaScript", "Runs in browser on dev machine")
+            Container(localBackend, "Node.js Express Server", "Node.js, Express", "Runs locally via Node.js")
+            ContainerDb(localMariaDB, "MariaDB Database", "MariaDB", "Local database instance")
+            ContainerDb(localFilesystem, "Application Filesystem", "Local Disk", "Local file storage for game data")
+        }
+
+        ' Local network components for internet access
+        Deployment_Node(router, "Home Router", "Network Device", $sprite="router")
+        Deployment_Node(firewall, "Local Firewall", "Software/Hardware", $sprite="firewall")
+    }
+}
+
+' Relationships for Local Deployment
+
+' Local Access
+Rel(player, localFrontend, "Accesses", "HTTP (localhost)")
+Rel(localFrontend, localBackend, "Communicates via REST API", "HTTP (localhost)")
+Rel(localBackend, localMariaDB, "Connects to", "JDBC/SQL")
+Rel(localBackend, localFilesystem, "Accesses", "File I/O")
+
+' Internet Access (to Local Deployment)
+Rel(player, internet, "Accesses (from outside)", "HTTPS")
+Rel(internet, router, "Routes traffic to", "Public IP")
+Rel(router, firewall, "Passes through", "Port Forwarding")
+Rel(firewall, localBackend, "Allows access to", "Configured Port") ' Direct access to backend for local testing from internet
+
+' Optional: Add a legend for clarity
+SHOW_LEGEND()
+
+@enduml

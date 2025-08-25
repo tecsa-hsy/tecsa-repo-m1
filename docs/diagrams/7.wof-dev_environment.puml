@@ -1,0 +1,29 @@
+@startuml TECSA_M1_DevEnv
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title TECSA M1 - Development Environment
+
+Person(dev, "Developer", "Uses the TECSA M1 development environment")
+
+System_Boundary(vm, "Ubuntu VM in VirtualBox") {
+    
+    Container(nvm, "NVM", "Version Manager", "Manages multiple Node.js versions")
+    Container(nodejs, "Node.js", "Runtime Environment", "Executes backend JavaScript code")
+    Container(vscode, "VS Code", "IDE", "Code editing with Web Dev & Documentation extensions")
+    Container(git, "Git CLI", "Version Control", "Manages source code versions")
+    Container(xampp, "XAMPP", "Local Web Server", "Apache, MariaDB, PHP, for local dev/testing")
+}
+
+System_Ext(github, "GitHub", "Remote Git Repository Hosting")
+System_Ext(internet, "Internet", "External APIs, packages, documentation")
+
+Rel(dev, vm, "Works on", "Local development")
+Rel(nvm, nodejs, "Manages versions of")
+Rel(git, github, "Push/Pull code", "HTTPS/SSH")
+Rel(vscode, git, "Commits/Pushes code via Git integration")
+Rel(vscode, nodejs, "Runs & debugs backend code")
+Rel(vscode, xampp, "Accesses local server for testing")
+Rel(nodejs, internet, "Downloads NPM packages")
+Rel(vscode, internet, "Fetches extensions & documentation")
+
+@enduml

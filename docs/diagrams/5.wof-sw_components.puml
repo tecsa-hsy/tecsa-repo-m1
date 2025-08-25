@@ -1,0 +1,31 @@
+@startuml
+
+' Import C4-PlantUML std lib for drawing Container diagrams (Level2). Access to predefined macros and styles.
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title "Wheel Of Fortune" Web App - Software Container
+
+Person(player, "Player", "A person playing WoF")
+
+'  Define the System Boundary "wofWebApp" with it´s lable
+System_Boundary(wofWebApp, "WoF Web App") {
+
+    ' Define "frontend" container with it´s lable, it´s technologies and it´s description
+    Container(frontend, "Frontend Application", "HTML5, CSS, JavaScript", "Provides the interactive user interface for the game.")
+
+    Container(backend, "Backend Application", "Node.js, Express", "Handles game logic, API requests, and data persistence.")
+
+    ContainerDb(mariadb, "MariaDB Database", "MariaDB", "Stores game state in 2nd app version")
+
+    ContainerDb(filesystem, "Filesystem", "Filesystem", "Stores game state in 1st app version.")
+}
+
+' Define Relationships
+Rel(player, frontend, "Uses", "HTTPS")
+Rel(frontend, backend, "Uses REST API", "JSON/HTTPS")
+Rel(backend, mariadb, "Reads from and writes to", "SQL/JDBC")
+Rel(backend, filesystem, "Reads from and writes to", "File I/O")
+
+' Optional: Add a legend for clarity
+SHOW_LEGEND()
+@enduml
