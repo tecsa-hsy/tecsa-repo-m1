@@ -66,6 +66,31 @@ For this purpose will we use a simple web app as a practical example: the game '
 
 [Software Components](./diagrams/5.wof-sw_components.puml)
 
+## Interface: Frontend ↔ Backend (REST API)
+
+FE communicates with BE via a JSON-based REST API over HTTP.
+
+- **Base API URL:** `http://localhost:3000/api/wheel`
+- **Protocol:** HTTP   
+- **Data format:** JSON  
+- **Data Transfer Objects(DTO):**
+```javascript
+interface GameState {
+    wins: number;
+    losses: number;
+    lastResult: string;
+}
+```
+- **Endpoints**
+```markdown
+| Endpoint | Method | Description              | Req Body | Resp (JSON) Example                                 |
+| -------- | ------ | ------------------------ | -------- | --------------------------------------------------- |
+| `/`      | GET    | Fetch current game state | –        | `{ "wins": 2, "losses": 1, "lastResult": "1000€" }` |
+| `/spin`  | POST   | Spin wheel, update stats | –        | `{ "wins": 3, "losses": 1, "lastResult": "Blank" }` |
+| `/reset` | POST   | Reset statistics to zero | –        | `{ "wins": 0, "losses": 0, "lastResult": null }`    |
+```
+- **Error handling:** Error responses are returned with HTTP status 500 and a JSON error message. 
+
 # 6. Runtime View {#section-runtime-view}
 
 # 7. Deployment View {#section-deployment-view}
@@ -85,6 +110,34 @@ For this purpose will we use a simple web app as a practical example: the game '
 # 8. Cross-cutting Concepts {#section-concepts}
 
 # 9. Architecture Decisions {#section-design-decisions}
+
+## Frontend Technology
+
+* Problem Statement
+Which FE Tech to use for our purposes...?
+
+* Decision Drivers
+-> most important factors 
+
+* Considered Options
+- O1. HTML/CSS/Javascript
+Note: considered just one option, because it was prescribed in the constraints
+
+* Decision Outcome: O1
+
+## Communication between Frontend & Backend
+
+* Problem Statement
+Which communication protocol to use between FE & BE...?
+
+* Decision Drivers
+-> most important factors 
+
+* Considered Options
+- O1. REST API
+Note: considered just one option, because it was prescribed in the constraints
+
+* Decision Outcome: O1
 
 # 10. Quality Requirements {#section-quality-scenarios}
 
