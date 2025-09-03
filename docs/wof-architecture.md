@@ -139,6 +139,20 @@ Note: considered just one option, because it was prescribed in the constraints
 
 * Decision Outcome: O1
 
+## Backend Technology
+
+* Problem Statement
+Which BE Tech to use for our purposes...?
+
+* Decision Drivers
+-> most important factors 
+
+* Considered Options
+- O1. Node.Js/Express
+Note: considered just one option, because it was prescribed in the constraints
+
+* Decision Outcome: O1
+
 # 10. Quality Requirements {#section-quality-scenarios}
 
 [NFRs](./wof-requirements.md)

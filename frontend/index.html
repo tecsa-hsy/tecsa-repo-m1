@@ -93,6 +93,7 @@
 
         async function fetchGameState() {
           try {
+            console.log(`User loading gamestate`);
             const resp = await fetch(API_URL);
             const gs = await resp.json();
             updateFrontend(gs);
@@ -118,7 +119,8 @@
 
         async function spinWheel() {
           try {
-            const resp = await fetch(`${API_URL}/spin`);
+            console.log(`User spinning the wheel`);
+            const resp = await fetch(`${API_URL}/spin`, { method: 'POST'});
             const gs = await resp.json();
             updateFrontend(gs);
           } catch (error) {
@@ -129,8 +131,9 @@
 
         async function resetStats() {
           try {
+            console.log(`User resetting gamestate`);
             statsDisplay.textContent = '';
-            const resp = await fetch(`${API_URL}/reset`);
+            const resp = await fetch(`${API_URL}/reset`, { method: 'POST'});
             const gs = await resp.json();
             updateFrontend(gs);
           } catch (error) {
