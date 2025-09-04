@@ -109,12 +109,14 @@
          * @param {GameState { wins: number; losses: number; lastResult: string; }}
          * */
         function updateFrontend(gs) {
-            if (gs.lastResult === 'Blank') {
+          if (gs.lastResult == null) {
+              resultMessage.textContent = `Try the first time!`;
+          } else if (gs.lastResult === 'Blank') {
               resultMessage.textContent = `Unluckly, try again!`;
-            } else {
-              resultMessage.textContent = `Well done! You won: ${gs.lastResult}`;
-            }
-            statsDisplay.textContent = `Wins: ${gs.wins} | Losses: ${gs.losses}`;
+          } else {
+            resultMessage.textContent = `Well done! You won: ${gs.lastResult}`;
+          }
+          statsDisplay.textContent = `Wins: ${gs.wins} | Losses: ${gs.losses}`;
         }
 
         async function spinWheel() {
