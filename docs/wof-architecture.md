@@ -70,7 +70,7 @@ For this purpose will we use a simple web app as a practical example: the game '
 
 FE communicates with BE via a JSON-based REST API over HTTP.
 
-- **Base API URL:** `http://localhost:3000/api/wheel`
+- **Base API URL:** `http://localhost:3000/api`
 - **Protocol:** HTTP   
 - **Data format:** JSON  
 - **Data Transfer Objects(DTO):**
@@ -101,7 +101,9 @@ interface GameState {
 
 ## Local Environment Deployment
 
-[Local Deployment](./diagrams/7.wof-local_env_deployment.puml)
+[Local Deployment - Component View](./diagrams/7.wof-local_env_deployment.puml)
+
+[Local Deployment - Network View](./diagrams/7.wof-local_env_network-view.drawio)
 
 ## Integration Environment Deployment
 

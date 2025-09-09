@@ -15,37 +15,37 @@
 
 [Frontend MockUp with Draw.io](./diagrams/wof-frontend-mockup.drawio)
 
-* **FR.1.1 Spin Wheel:**
-    * FR.1.1.1 The system shall allow the user to initiate a "spin" action via a dedicated button in the frontend.
-    * FR.1.1.2 The frontend shall send a request to the backend to determine the spin result.
-    * FR.1.1.3 The backend shall randomly select a result ("Blank", "1000$", "5000$") based on predefined probabilities/weights.
-    * FR.1.1.4 The backend shall update the game state (wins/losses, last result) based on the spin outcome.
-    * FR.1.1.5 The backend shall return the updated game state to the frontend.
-    * FR.1.1.6 The frontend shall display the final spin result to the user.
-    * FR.1.1.7 The frontend shall update the win/loss statistics based on the backend's response.
-* **FR.1.2 Display Game State:**
-    * FR.1.2.1 The system shall display the current win and loss statistics to the user.
-    * FR.1.1.2 Upon initial load or refresh, the frontend shall fetch the latest game state from the backend and display it.
-* **FR.1.3 Reset Statistics:**
-    * FR.1.3.1 The system shall allow the user to reset the win and loss statistics via a dedicated button.
-    * FR.1.3.2 Upon reset, the frontend shall send a request to the backend to clear the statistics.
-    * FR.1.3.3 The backend shall reset the win and loss counts to zero and clear the last result.
-    * FR.1.3.4 The backend shall return the reset game state to the frontend.
-    * FR.1.3.5 The frontend shall update the displayed statistics to zero and clear the result message.
+* **✅FR.1.1 Spin Wheel:**
+    * ✅FR.1.1.1 The system shall allow the user to initiate a "spin" action via a dedicated button in the frontend.
+    * ✅FR.1.1.2 The frontend shall send a request to the backend to determine the spin result.
+    * ✅FR.1.1.3 The backend shall randomly select a result ("Blank", "1000$", "5000$") based on predefined probabilities/weights.
+    * ✅FR.1.1.4 The backend shall update the game state (wins/losses, last result) based on the spin outcome.
+    * ✅FR.1.1.5 The backend shall return the updated game state to the frontend.
+    * ✅FR.1.1.6 The frontend shall display the final spin result to the user.
+    * ✅FR.1.1.7 The frontend shall update the win/loss statistics based on the backend's response.
+* **✅FR.1.2 Display Game State:**
+    * ✅FR.1.2.1 The system shall display the current win and loss statistics to the user.
+    * ✅FR.1.1.2 Upon initial load or refresh, the frontend shall fetch the latest game state from the backend and display it.
+* **✅FR.1.3 Reset Statistics:**
+    * ✅FR.1.3.1 The system shall allow the user to reset the win and loss statistics via a dedicated button.
+    * ✅FR.1.3.2 Upon reset, the frontend shall send a request to the backend to clear the statistics.
+    * ✅FR.1.3.3 The backend shall reset the win and loss counts to zero and clear the last result.
+    * ✅FR.1.3.4 The backend shall return the reset game state to the frontend.
+    * ✅FR.1.3.5 The frontend shall update the displayed statistics to zero and clear the result message.
 * **FR.1.4 Persistent Game State:**
-    * FR.1.4.1 The backend shall store the game's win/loss statistics and the last result persistently in a file (`lucky_wheel_state.json`).
-    * FR.1.4.2 The game state shall be loaded from this file upon backend startup.
-    * FR.1.4.3 The game state shall be saved to this file after every spin and every reset action.
-    * FR.1.4.4 In the last version of the system, the game state shall be saved to a MariaDB instead of a file.
+    * ✅FR.1.4.1 The backend shall store the game's win/loss statistics and the last result persistently in a file (`lucky_wheel_state.json`).
+    * ✅FR.1.4.2 The game state shall be loaded from this file upon backend startup.
+    * ✅FR.1.4.3 The game state shall be saved to this file after every spin and every reset action.
+    * ❌FR.1.4.4 In the last version of the system, the game state shall be saved to a MariaDB instead of a file.
 
 ---
 
 ## Non-Functional Requirements: describe *how well* the system performs its functions
 
 **1. Maintainability:**
-* **NFR.1.1 Modularity:** The codebase is separated into distinct frontend and backend components, communicating via a well-defined REST API.
-* **NR.1.2 Readability:** All code shall follow the Airbnb JavaScript Style Guide and the Google HTML/CSS Style Guide. Variable and function names must be clear and descriptive. Core logic shall be documented with comments. Adherence is verified via code review and ESLint configuration..
-* **NR.1.3 Testability:** The clear separation of concerns (UI vs. business logic) allows for easier testing of individual components (backend API endpoints should be testable independently).
+* ✅**NFR.1.1 Modularity:** The codebase is separated into distinct frontend and backend components, communicating via a well-defined REST API.
+* ❌**NR.1.2 Readability:** All code shall follow the Airbnb JavaScript Style Guide and the Google HTML/CSS Style Guide. Variable and function names must be clear and descriptive. Core logic shall be documented with comments. Adherence is verified via code review and ESLint configuration..
+* ✅**NR.1.3 Testability:** The clear separation of concerns (UI vs. business logic) allows for easier testing of individual components (backend API endpoints should be testable independently).
 
 **2. Reliability:**
 * **NR.2.1 Fault Tolerance (Backend):** The backend shall gracefully handle cases where the game state file is not found or is corrupted upon reading, by initializing a new game state.

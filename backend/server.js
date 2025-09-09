@@ -47,8 +47,8 @@ function saveGameState(gs) {
 }
 const wheelSegments = [
   { value: "Blank", weight: 10 },
-  { value: "1000€", weight: 10 },
-  { value: "5000€", weight: 80 },
+  { value: "1000$", weight: 10 },
+  { value: "5000$", weight: 80 },
 ];
 
 // Pick a random value from wheelSegments based on it's weight
@@ -69,13 +69,13 @@ function spin() {
 }
 // WoF REST Endpoints
 
-app.get("/api/wheel", (req, res) => {
+app.get("/api", (req, res) => {
   console.log(`BE REST Endpoint [/] called by client with IP [${req.id}]\n`);
   const gs = readGameState();
   res.json(gs);
 });
 
-app.post("/api/wheel/spin", (req, res) => {
+app.post("/api/spin", (req, res) => {
   console.log(`BE REST Endpoint [/spin] called by client with IP [${req.ip}]\n`);
   //1. get current gs
   const gs = readGameState();
@@ -94,7 +94,7 @@ app.post("/api/wheel/spin", (req, res) => {
   res.json(gs);
 });
 
-app.post("/api/wheel/reset", (req, res) => {
+app.post("/api/reset", (req, res) => {
   console.log(`BE REST Endpoint [/reset] called by client with IP [${req.ip}]\n`);
   // 1. reset gs
   const newEmptyGs = { ...initialGameState };
