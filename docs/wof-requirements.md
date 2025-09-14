@@ -36,7 +36,7 @@
     * ✅FR.1.4.1 The backend shall store the game's win/loss statistics and the last result persistently in a file (`lucky_wheel_state.json`).
     * ✅FR.1.4.2 The game state shall be loaded from this file upon backend startup.
     * ✅FR.1.4.3 The game state shall be saved to this file after every spin and every reset action.
-    * ❌FR.1.4.4 In the last version of the system, the game state shall be saved to a MariaDB instead of a file.
+    * ✅FR.1.4.4 In the last version of the system, the game state shall be saved to a MariaDB instead of a file.
 
 ---
 
@@ -48,20 +48,20 @@
 * ✅**NR.1.3 Testability:** The clear separation of concerns (UI vs. business logic) allows for easier testing of individual components (backend API endpoints should be testable independently).
 
 **2. Reliability:**
-* **NR.2.1 Fault Tolerance (Backend):** The backend shall gracefully handle cases where the game state file is not found or is corrupted upon reading, by initializing a new game state.
-* **NR.2.2 Error Handling (Frontend):** The frontend shall display user-friendly error messages if communication with the backend fails.
-* **NR.2.3 Error Logging (Backend):** The backend shall log errors to the console when file operations fail.
+* ✅**NR.2.1 Fault Tolerance (Backend):** The backend shall gracefully handle cases where the game state file is not found or is corrupted upon reading, by initializing a new game state.
+* ✅**NR.2.2 Error Handling (Frontend):** The frontend shall display user-friendly error messages if communication with the backend fails.
+* ✅**NR.2.3 Error Logging (Backend):** The backend shall log errors to the console when file operations fail.
 
 **3. Portability:**
-* **NR.3.1 Platform Independence (Backend):** The backend, shall be executable on the following operating systems: Windows, macOS, Linux, Android, Ios.
-* **NR.3.2 Platform Independence (Frontend):** The frontend shall be viewable in the following modern web browser on desktop & mobile devices: Chrome, Firefox, Edge & Safari.
+* ✅**NR.3.1 Platform Independence (Backend):** The backend, shall be executable on the following operating systems: Windows, macOS, Linux, Android, Ios.
+* ✅**NR.3.2 Platform Independence (Frontend):** The frontend shall be viewable in the following modern web browser on desktop & mobile devices: Chrome, Firefox, Edge & Safari.
 * **NR.3.3 Deployment Environment:** The application shall be deployable to the local development environment and to a virtual private server.
 
 **4. Usability:**
-* **NR.4.1 User Interface Clarity:** The user interface shall clearly present the "Spin" button, the result message, and the win/loss statistics.
+* ✅**NR.4.1 User Interface Clarity:** The user interface shall clearly present the "Spin" button, the result message, and the win/loss statistics.
 * **NR.4.2 Responsiveness (UI):** The "Spin" button shall be disabled during the spinning animation to prevent multiple concurrent spins.
 * **NR.4.3 Feedback:** The frontend shall provide visual feedback (e.g., spinning animation, changing text) while the wheel is being spun and before the final result is displayed.
-* **NR.4.4 Language:** The user interface shall primarily use English for user-facing text and messages.
+* ✅**NR.4.4 Language:** The user interface shall primarily use English for user-facing text and messages.
 * **NR.4.4 Internet Accessibility:** The application must be accessible via the internet at a dedicated domain name.
 
 **5. Efficiency:**

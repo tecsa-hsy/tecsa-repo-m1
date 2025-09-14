@@ -66,6 +66,8 @@ For this purpose will we use a simple web app as a practical example: the game '
 
 [Software Components](./diagrams/5.wof-sw_components.puml)
 
+[Backend white box view](./diagrams/5.wof-backend_white_box.drawio)
+
 ## Interface: Frontend ↔ Backend (REST API)
 
 FE communicates with BE via a JSON-based REST API over HTTP.
@@ -110,6 +112,17 @@ interface GameState {
 [Int Deployment](./diagrams/7.wof-local_env_deployment.puml)
 
 # 8. Cross-cutting Concepts {#section-concepts}
+
+## Data Access with Repository Pattern Concept
+
+Rationale: 
+- Decouple core app business logic from the data persistence layer 
+- Core Benefits: 
+  * Ability to easily switch data sources
+  * Clean Code (Separation of concerns, better testability, easy Maintainability)
+
+Architectural Consequences: 
+- Introduces an abstraction layer and requires dedicated repository modules.
 
 # 9. Architecture Decisions {#section-design-decisions}
 
