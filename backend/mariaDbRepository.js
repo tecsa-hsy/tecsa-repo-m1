@@ -1,19 +1,19 @@
 
 const mariaDb = require('mariadb');
 
+// load .env config
+require('dotenv').config();
+
+const DB_USER = process.env.DB_USER || 'root';
+const DB_PASS = process.env.DB_PASS || '';
+
 const pool = mariaDb.createPool({
   host: 'localhost',
-  user: 'root',
-  password: '',
+  user: DB_USER,
+  password: DB_PASS,
   database: 'lucky_wheel_db',
   connectionLimit: 5
 });
-
-const initialGameState = {
-  wins: 0,
-  losses: 0,
-  lastResult: null,
-};
 
 /**
  * @function readGameState
