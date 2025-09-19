@@ -55,7 +55,7 @@
 **3. Portability:**
 * ✅**NR.3.1 Platform Independence (Backend):** The backend, shall be executable on the following operating systems: Windows, macOS, Linux, Android, Ios.
 * ✅**NR.3.2 Platform Independence (Frontend):** The frontend shall be viewable in the following modern web browser on desktop & mobile devices: Chrome, Firefox, Edge & Safari.
-* **NR.3.3 Deployment Environment:** The application shall be deployable to the local development environment and to a virtual private server.
+* ✅**NR.3.3 Deployment Environment:** The application shall be deployable to the local development environment and to a virtual private server.
 
 **4. Usability:**
 * ✅**NR.4.1 User Interface Clarity:** The user interface shall clearly present the "Spin" button, the result message, and the win/loss statistics.

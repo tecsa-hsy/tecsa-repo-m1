@@ -2,10 +2,10 @@
 
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
 
-title "Wheel Of Fortune" Web App - Integration Deployment to a VPS
+title WoF Web App - Integration Deployment to a VPS
 
 ' Define the Person (User)
-Person(player, "Player", "A person playing WoF")
+Person(player, "Player")
 
 ' Define the Internet as a global boundary (empty, just conceptual)
 Deployment_Node(internet, "The Internet", "Public Network") {
@@ -13,17 +13,15 @@ Deployment_Node(internet, "The Internet", "Public Network") {
 }
 
 ' Integration Deployment (Strato VPS)
-Deployment_Node(vpsEnv, "Integration Deployment", "VPS Environment") {
 
-    Deployment_Node(stratoVPS, "Strato VPS", "Ubuntu Server") {
+Deployment_Node(stratoVPS, "VPS Instance", "Ubuntu Server") {
 
-        Deployment_Node(nginx, "Nginx Webserver", "Nginx", "Reverse Proxy & Static File Server") {
-            Container(vpsFrontend, "Frontend App", "HTML5, CSS, JavaScript", "Served by Nginx")
-            Container(vpsBackend, "Backend App", "Node.js, Express", "Runs via behind Nginx")
-        }
-        ContainerDb(vpsMariaDB, "MariaDB Database", "MariaDB", "Dedicated database instance on VPS")
-        ContainerDb(vpsFilesystem, "Filesystem", "VPS Disk", "File storage on VPS")
+    Deployment_Node(nginx, "Nginx Webserver", "Nginx", "Reverse Proxy & Static File Server") {
+        Container(vpsFrontend, "Frontend App", "HTML5, CSS, JavaScript", "Served by Nginx")
+        Container(vpsBackend, "Backend App", "Node.js, Express", "Reverse proxied by Nginx")
     }
+    ContainerDb(vpsMariaDB, "MariaDB Database", "MariaDB", "DB instance on VPS")
+    ContainerDb(vpsFilesystem, "Filesystem", "VPS Disk", "File storage on VPS")
 }
 
 ' Relationships for Integration Deployment
@@ -31,7 +29,7 @@ Rel(player, internet, "Accesses", "HTTPS")
 Rel(internet, nginx, "Routes traffic to", "Public IP (with DNS)")
 Rel(nginx, vpsFrontend, "Serves", "HTTP/S")
 Rel(nginx, vpsBackend, "Proxies requests to", "HTTP/S")
-Rel(vpsFrontend, vpsBackend, "Communicates via REST API", "JSON/HTTPS") ' Frontend on VPS talks to Backend on VPS
+Rel(vpsFrontend, vpsBackend, "REST Calls") 
 Rel(vpsBackend, vpsMariaDB, "Connects to", "JDBC/SQL")
 Rel(vpsBackend, vpsFilesystem, "Accesses", "File I/O")
 

@@ -109,7 +109,9 @@ interface GameState {
 
 ## Integration Environment Deployment
 
-[Int Deployment](./diagrams/7.wof-local_env_deployment.puml)
+[Int Deployment - Component View](./diagrams/7.wof-int_env_deployment.puml)
+
+[Int Deployment - Network View](./diagrams/7.wof-int_env_network-view.drawio)
 
 # 8. Cross-cutting Concepts {#section-concepts}
 
@@ -167,6 +169,29 @@ Which BE Tech to use for our purposes...?
 Note: considered just one option, because it was prescribed in the constraints
 
 * Decision Outcome: O1
+
+## VPS Provider for Integration Deployment
+
+* Problem Statement
+Which VPS Provider to use for our purposes...?
+
+* Decision Drivers
+  - Costs / Free Trial
+  - Ease of Use & Developer Tools
+  - Documentation and community
+  - Global Reach / Data Centers location
+  - Reliability
+
+* Considered Options
+  - O1. DigitalOcean
+  - O2. Linode (Akamai)
+  - O3. Hostinger
+  - O4. Strato
+  [VPS Provider Comparison 2025](./diagrams/imgs/vps-provider-comparison-2025.png)
+
+* Decision Outcome: O1. DigitalOcean
+  - Positive consequences: we can use the $200 free credit to test our VPS deployment for 60 days at no charges
+  - Negative consequences: -
 
 # 10. Quality Requirements {#section-quality-scenarios}
 
